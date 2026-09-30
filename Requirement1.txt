@@ -1,0 +1,28 @@
+import numpy as np 
+import joblib
+import streamlit as st 
+
+#---------------------------------------
+obj= joblib.load('california.joblib')
+model=obj['model']
+cols=obj['columns']
+
+#--------------------------------------
+st.title('California app')
+In=[]
+for i in cols:
+    v=st.number_Input('Enter MedInc value:')
+    In.append(v)
+if st.button('Click'):
+    out=model.predict([In])
+    st.success(f"The Median House value is : {out})
+
+
+
+anaconda                    vscode
+  
+joblib -1.5.2               joblib - 1.6.0
+numpy - 2.3.5               numpy - 2.5.3
+sklearn - 1.7.2             sklearn - 1.9.1
+streamlit - 1.51.0          streamlit - 1.64.0
+pandas - 2.3.3              pandas -3.0.6
